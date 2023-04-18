@@ -19,7 +19,7 @@ var (
 )
 
 type User struct {
-	ID       string `json:"id,omitempty" bson:"_id,omitempty"`
+	ID        string `json:"id,omitempty" bson:"_id,omitempty"`
 	FirstName string `json:"firstName,omitempty" bson:"firstName,omitempty"`
 	LastName  string `json:"lastName,omitempty" bson:"lastName,omitempty"`
 	Age       int    `json:"age,omitempty" bson:"age,omitempty"`
@@ -35,8 +35,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer client.Disconnect(context.Background())
-
 	collection = client.Database("mydb").Collection("users")
 
 	router := mux.NewRouter()
@@ -45,8 +43,8 @@ func main() {
 	router.HandleFunc("/users", createUser).Methods("POST")
 	router.HandleFunc("/users/{id}", updateUser).Methods("PUT")
 	router.HandleFunc("/users/{id}", deleteUser).Methods("DELETE")
-
-	log.Fatal(http.ListenAndServe(":8000", router))
+	fmt.Println("Connected")
+	log.Fatal(http.ListenAndServe(":8002", router))
 }
 
 func getUsers(w http.ResponseWriter, r *http.Request) {
@@ -82,7 +80,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	log.Fatalf("get is best")
 	json.NewEncoder(w).Encode(user)
 }
 
