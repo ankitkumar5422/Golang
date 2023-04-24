@@ -1,0 +1,121 @@
+package main
+
+
+ 
+
+import (
+
+    "fmt"
+
+    "time"
+
+)
+
+func complexWork() {
+
+   
+
+    time.Sleep(2 * time.Minute)
+
+}
+
+
+ 
+
+func simpleWork() {
+
+   
+
+    time.Sleep(10 * time.Millisecond)
+
+}
+
+
+ 
+
+func testComplex(){
+
+    fmt.Println("Starting complex working.. ")
+
+    complexWork()
+
+    fmt.Println("Complex work done!")
+
+}
+
+
+ 
+
+func testSimple(){
+
+
+ 
+
+    fmt.Println("Starting simple working.. " )
+
+    simpleWork()
+
+    fmt.Println("Simple work done!")
+
+
+ 
+
+}
+
+func main() {
+
+    //execute test without goroutines
+
+    start := time.Now()
+
+    testComplex()
+
+    testSimple()
+
+    testComplex()
+
+    takentime := time.Since(start)
+
+    fmt.Printf("Time taken without goroutines: %s\n", takentime)
+
+
+ 
+
+    //execute test with goroutines
+
+    start = time.Now()
+
+    go testComplex()
+
+    go testSimple()
+
+    go testComplex()
+
+    time.Sleep(2 * time.Minute)
+
+    time.Sleep(time.Millisecond)
+
+    takentime = time.Since(start)
+
+    fmt.Printf("Time taken with goroutines: %s\n", takentime)
+
+}
+
+
+
+#output
+
+Starting complex working.. 
+Complex work done!
+Starting simple working..
+Simple work done!
+Starting complex working..
+Complex work done!
+Time taken without goroutines: 4m0.0395031s
+Starting complex working..
+Starting complex working..
+Starting simple working..
+Simple work done!
+Complex work done!
+Complex work done!
+Time taken with goroutines: 2m0.0148315s
