@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	
 )
 
 func RequestHandler(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +19,10 @@ func RequestHandler(w http.ResponseWriter, r *http.Request) {
 
 	if len(name) == 0 {
 		w.WriteHeader(http.StatusBadRequest)
-		fmt.Fprintf(w, "Serve is pass")
+		fmt.Fprintf(w, "Server is pass")
 		return
 	}
+	
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "Hello %s", name)
 }

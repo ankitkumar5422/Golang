@@ -8,8 +8,8 @@ import (
 )
 
 func TestRequestHandler(t *testing.T) {
-	expected := "Hello Ani"
-    req := httptest.NewRequest(http.MethodGet, "/Ankit?name=Ani", nil)
+	expected := "Hello Ani" 
+	req := httptest.NewRequest(http.MethodGet, "/Ankit?name=Ani", nil)
 	w := httptest.NewRecorder()
 	RequestHandler(w, req)
 	res := w.Result()
@@ -24,7 +24,7 @@ func TestRequestHandler(t *testing.T) {
 }
 
 func TestRequestHandlerBadRequest(t *testing.T) {
-	expected := "Serve is pass"
+	expected := "Server is pass"
 	req := httptest.NewRequest(http.MethodGet, "/Ankit", nil)
 	w := httptest.NewRecorder()
 	RequestHandler(w, req)
@@ -41,6 +41,14 @@ func TestRequestHandlerBadRequest(t *testing.T) {
 
 func TestRequestHandlerInvalidRequest(t *testing.T) {
 	req := httptest.NewRequest(http.MethodPost, "/Ankit", nil)
+	w := httptest.NewRecorder()
+	RequestHandler(w, req)
+	if w.Code != http.StatusBadRequest {
+		t.Errorf("Expected status code %d but got %d", http.StatusBadRequest, w.Code)
+	}
+}
+func TestRequestHandlerInvalidQueryRequest(t *testing.T) {
+	req := httptest.NewRequest(http.MethodPost, "/Ankit?test=%@!.,?test=", nil)
 	w := httptest.NewRecorder()
 	RequestHandler(w, req)
 	if w.Code != http.StatusBadRequest {
