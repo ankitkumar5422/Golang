@@ -5,14 +5,24 @@ go 1.20
 require golang.org/x/tour v0.1.0
 
 require (
+	github.com/fsnotify/fsnotify v1.4.9 // indirect
+	github.com/nxadm/tail v1.4.8 // indirect
+	github.com/onsi/ginkgo v1.16.5 // indirect
+	github.com/onsi/gomega v1.27.8 // indirect
+	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
+)
+
+require (
 	cloud.google.com/go v0.110.0 // indirect
 	cloud.google.com/go/compute v1.19.0 // indirect
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
 	cloud.google.com/go/firestore v1.9.0 // indirect
 	cloud.google.com/go/longrunning v0.4.1 // indirect
 	github.com/aerospike/aerospike-client-go v3.1.0+incompatible // indirect
+	github.com/badoux/checkmail v1.2.1
 	github.com/brianvoe/gofakeit/v6 v6.21.0 // indirect
 	github.com/bxcodec/faker/v3 v3.8.1 // indirect
+	github.com/dSquadAdmin/cache v0.0.0-20220817025155-0daa77797a21
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-chi/chi v1.5.4 // indirect
 	github.com/go-sql-driver/mysql v1.7.1 // indirect
@@ -42,10 +52,10 @@ require (
 	go.mongodb.org/mongo-driver v1.11.4 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	golang.org/x/crypto v0.8.0 // indirect
-	golang.org/x/net v0.9.0 // indirect
+	golang.org/x/net v0.10.0 // indirect
 	golang.org/x/oauth2 v0.7.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.7.0 // indirect
+	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/time v0.1.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
